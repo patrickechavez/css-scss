@@ -1,0 +1,58 @@
+.story {
+  //   border: 1px solid black;
+  width: 75%;
+  margin: 0 auto;
+  box-shadow: 0 3rem 6rem rgba($color-black, 0.1); //top-bottom, left-right, blur rgba(color, opacity);
+  background-color: rgba($color-white, 0.6);
+  padding: 6rem;
+  padding-left: 9rem;
+  font-size: $default-font-size;
+  transform: skew(-12deg);
+
+  & > * {
+    transform: skew(12deg);
+  }
+
+  &__shape {
+    width: 15rem;
+    height: 15rem;
+    float: left;
+    shape-outside: circle(50% at 50% 50%);
+    -webkit-shape-outside: circle(
+      50% at 50% 50%
+    ); //the 50% is the radius of the circle, so the radius is 7.5rem form width and height. to work this shape-outside, the element must ble floated
+    clip-path: circle(50% at 50% 50%);
+    transform: translateX(-3rem) skew(12deg);
+    position: relative;
+  }
+
+  &__img {
+    width: 100%;
+    transform: scale(1.2);
+    transition: all 0.5s;
+  }
+
+  &__caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 20%);
+    color: $color-white;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.7rem;
+    opacity: 0;
+    transition: all 0.5s;
+    // backface-visibility: hidden;
+  }
+
+  &:hover &__caption {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+
+  &:hover &__img {
+    transform: scale(1);
+    filter: blur(2px) brightness(80%);
+  }
+}
